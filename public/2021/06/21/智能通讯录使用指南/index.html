@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pyyz.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="项目：智能通讯录 作者：冯振华 单位：山东省平原县第一中学 版本：V5.1 版权：冯振华 @ CopyRight 2021&#x2F;6&#x2F;11-2021&#x2F;6&#x2F;26 邮箱:fengzhenhua@outlook.com 个人主页:https:&#x2F;&#x2F;fengzhenhua-vip.github.io 日志：增加JiaoShiFenZuLoad, JiaoShiZiXiLoad, IDAddressLoad ,判">
+<meta property="og:type" content="article">
+<meta property="og:title" content="智能通讯录使用指南">
+<meta property="og:url" content="http://pyyz.github.io/2021/06/21/%E6%99%BA%E8%83%BD%E9%80%9A%E8%AE%AF%E5%BD%95%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/index.html">
+<meta property="og:site_name" content="格物万象，究理天人">
+<meta property="og:description" content="项目：智能通讯录 作者：冯振华 单位：山东省平原县第一中学 版本：V5.1 版权：冯振华 @ CopyRight 2021&#x2F;6&#x2F;11-2021&#x2F;6&#x2F;26 邮箱:fengzhenhua@outlook.com 个人主页:https:&#x2F;&#x2F;fengzhenhua-vip.github.io 日志：增加JiaoShiFenZuLoad, JiaoShiZiXiLoad, IDAddressLoad ,判">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-06-21T11:12:43.000Z">
+<meta property="article:modified_time" content="2021-09-27T08:23:04.793Z">
+<meta property="article:author" content="冯振华">
+<meta property="article:tag" content="VBA开发">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://pyyz.github.io/2021/06/21/%E6%99%BA%E8%83%BD%E9%80%9A%E8%AE%AF%E5%BD%95%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://pyyz.github.io/2021/06/21/%E6%99%BA%E8%83%BD%E9%80%9A%E8%AE%AF%E5%BD%95%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/","path":"2021/06/21/智能通讯录使用指南/","title":"智能通讯录使用指南"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>智能通讯录使用指南 | 格物万象，究理天人</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">格物万象，究理天人</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">fengzhenhua@outlook.com</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">安装使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E8%BF%99%E6%AC%BE%E9%80%9A%E8%AE%AF%E5%BD%95"><span class="nav-number">1.1.</span> <span class="nav-text">为什么需要这款通讯录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8Emsoffice%E5%8A%9E%E5%85%AC%E8%BD%AF%E4%BB%B6%E7%9A%84%E8%A6%81%E6%B1%82%E5%8F%8A%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text">关于MSOffice办公软件的要求及设置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E"><span class="nav-number">2.</span> <span class="nav-text">版本说明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E7%89%88"><span class="nav-number">2.1.</span> <span class="nav-text">标准版</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E9%A1%B9%E7%9B%AE"><span class="nav-number">2.1.1.</span> <span class="nav-text">查询项目</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8C%96%E7%89%88"><span class="nav-number">2.2.</span> <span class="nav-text">简化版</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%89%88"><span class="nav-number">2.3.</span> <span class="nav-text">开发版</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E8%AF%B4%E6%98%8E"><span class="nav-number">3.</span> <span class="nav-text">查询说明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E4%B8%AA%E6%9F%A5%E8%AF%A2"><span class="nav-number">3.1.</span> <span class="nav-text">单个查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%89%E7%BB%84%E6%9F%A5%E8%AF%A2"><span class="nav-number">3.2.</span> <span class="nav-text">按组查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%B9%E9%87%8F%E6%9F%A5%E8%AF%A2"><span class="nav-number">3.3.</span> <span class="nav-text">批量查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A7%93%E5%90%8D%E6%9B%B4%E6%AD%A3"><span class="nav-number">3.4.</span> <span class="nav-text">姓名更正</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BC%E5%87%BA"><span class="nav-number">3.5.</span> <span class="nav-text">导出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B8%85%E7%A9%BA%E5%92%8C%E6%92%A4%E6%B6%88"><span class="nav-number">3.6.</span> <span class="nav-text">清空和撤消</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E7%94%B1%E6%8D%90%E8%82%8B"><span class="nav-number">4.</span> <span class="nav-text">自由捐肋</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">冯振华</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pyyz.github.io/2021/06/21/%E6%99%BA%E8%83%BD%E9%80%9A%E8%AE%AF%E5%BD%95%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冯振华">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="格物万象，究理天人">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          智能通讯录使用指南
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-06-21 19:12:43" itemprop="dateCreated datePublished" datetime="2021-06-21T19:12:43+08:00">2021-06-21</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-09-27 16:23:04" itemprop="dateModified" datetime="2021-09-27T16:23:04+08:00">2021-09-27</time>
+      </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <ul>
+<li>项目：智能通讯录</li>
+<li>作者：冯振华</li>
+<li>单位：山东省平原县第一中学</li>
+<li>版本：V5.1</li>
+<li>版权：冯振华 @ CopyRight 2021/6/11-2021/6/26</li>
+<li>邮箱:fengzhenhua@outlook.com</li>
+<li>个人主页:<a target="_blank" rel="noopener" href="https://fengzhenhua-vip.github.io">https://fengzhenhua-vip.github.io</a></li>
+<li>日志：增加JiaoShiFenZuLoad, JiaoShiZiXiLoad, IDAddressLoad ,判断是否存在对应的工作表，如果存在则加载并处理相关信息，不存在则忽略，避免了对应工作表不存在时的错误</li>
+<li>日志：由于改动幅度较大，直接由V3.6升级为V4.0,优化了代码结构，尽量调入内存提高效率，同时划分清楚打开工作薄时、和切换工作表时应当分别进行探测的项目</li>
+</ul>
+<span id="more"></span>
+<ul>
+<li>日志：增加关闭时自动清空查询页，并保存，阻止弹出保存对话框</li>
+<li>日志：不再设置“开发版”、“标准版”、“简化版”的版本常量信息，根据登录的查询源来判断版本，这样分发时不用再修改源码</li>
+<li>日志： V4.2加入查询校检功能含“身份证”、“手机号”、“短号”</li>
+<li>日志： V4.3修改撤消一次的实现方法，支持一张表内SeekRowMax次撤消</li>
+<li>日志： V4.4增加反撤消，即恢复功能，支持一张表内SeekRowMax次恢复，注意点清除后全部置零，不可再恢复，修改了Teacher为JiaoShi,Study为ZiXi ,原因为了不与考勤系统冲突</li>
+<li>日志： V4.7精简了关于分组名的定义及探测，系统自动探测源各组的组名，改以组名调入信息为以组索引号调入，如此可以自由改变Sheet名，增加了政治面貌的查询</li>
+<li>日志： V4.8增加LoadSeekSource对于配置文件的判断，以后则可以直接导入配置文件使用，同时修复SetOutColumnWidth中关于身份证、手机号、短号格式为文本格式的bug</li>
+<li>日志： V4.9修复按组查询时，输出同名的其他组人员bug</li>
+<li>日志： V5.1去除单元格的被选中的部分，同时去除了自动行高列宽和清空颜色两个模块，直接以代码写入需要的地方</li>
+</ul>
+<hr />
+<h1 id="安装使用">安装使用</h1>
+<h2 id="为什么需要这款通讯录">为什么需要这款通讯录</h2>
+<p>有人说我们都有手机，但是为什么还需要这么一款通讯录呢？因为你的手机不可能包含所有的同事;同时你知道同事叫什么名字，但不一定能将她的名字完全写对;对于面对一些安排工作时，每次都手工输入电话或身份证信息，不可能都毫无错误的输入，而本通讯录能帮您解决这些问题!</p>
+<h2 id="关于msoffice办公软件的要求及设置">关于MSOffice办公软件的要求及设置</h2>
+<p>将此通讯录放置于个人习惯的目录即可，使用时双击打开即可查询。目前支持MSOffice2007及以上版本，本通讯录在MSOffice2016上开发完成，同时考虑到目前大家使用MSOffice2007人员较多，所以专门对MSOffice2007做了优化，在MSOffice2007上运行良好，速度较快，推荐同事们使用。关于MSOffice2007的安装文件大家可以自行下载或联系信息技术老师，安装时请一定<code>安装完整版本</code>，已经安装MSoffice2007的用户，如果宏没有启用，运行office2007安装程序，选择<code>添加或删除功能</code>，将<code>office共享功能</code>中的<code>Visual Basic for Applications</code> 及<code>VBA项目的数字证书</code>勾选安装上即可。由于本身在MSOffice2016上开发完成，所以安装此版Office也可以获得良好体验。</p>
+<p>对于使用<code>WPS</code>的用户，由于其对<code>VBA</code>支持及大数据支持不是很好，同时免费版也会弹出广告等原因，目前不推荐同事们使用。同时，我个人也安装<code>WPS</code>的<code>VBA</code>模块进行测试，发现并不能完美工作，所以想要实现智能查询及日常办公，请安装<code>MSOffice2007及以上版本</code>。<code>LibreOffice</code> 也支持Macro ,而且比MSOffice支持的还要多，未来可能我也提供LibreOffice版本的通讯录在校内发布，向开源免费办公看齐。</p>
+<p>如果你按装了MSOffice2007及以上版本，双击通讯录文件后，会出现警告提示<code>安全警告 宏已被禁用。</code> 此安全警告后面有按钮<code>启用内容</code> ，请点击<code>启用内容</code>则本通讯录查询宏就可以自动运行了，各项查询工作就可以方便进行了。</p>
+<h1 id="版本说明">版本说明</h1>
+<p>在工作中为了更快、更准确的获得同事之间的通讯方式，我使用VBA开发了这款智能通讯录，此次一共准备了三个版本：<code>标准版</code> ，<code>简化版</code> 和<code>开发版</code>。</p>
+<h2 id="标准版">标准版</h2>
+<p><code>标准版</code>通讯录收录了全校教师的身份证信息，电话信息可以自动解析身份证包含的有关信息并提供查询。这个版本只提供给<code>行政办公室</code>用于人事工作，为保护大家的信息所以不对外发布，但是由于人事工作不包括教师自习的查询，所以标准版中删除了关于<code>教师自习</code>的模块，属于专为学校行政办公室提供的版本。</p>
+<h3 id="查询项目">查询项目</h3>
+<div class="note success"><p>姓名、性别、年龄、民族、籍贯、政貌、文化程度、职务、学科组、身份证号、手机号、短号、电子邮箱、查询日期、拼音匹配、生肖、星座</p>
+</div>
+<p>上述项目应当在通讯录<code>第2行</code>填写,至少包含<code>姓名</code> ，<code>手机号</code>，<code>短号</code>，<code>身份证号</code> 之一，可以自由组合排列，以获得目标文档。系统只要检测到填写其中之一，则自动查询信息并写入对应列。</p>
+<h2 id="简化版">简化版</h2>
+<p><code>简化版</code> 提供<code>老师自习安排</code>和<code>电话信息</code>模块，不支持所有有关身份证信息的查询，此版本对<code>平原一中校内发布</code> ，希望同事们自己方便工作，不要流传到外界，因个人原因导致流传到外界并造成不良影响的，由<code>个人承担法律责任</code>,与本作者无关。此版提供查询项目为</p>
+<div class="note success"><p>姓名、职务、学科组、手机号、短号、电子邮箱、查询日期、拼音匹配</p>
+</div>
+<p>上述项目均在制作系统时锁定，不允许自由调整，仅提供基本查询，系统只要检测到填写其中之一，则自动查询信息并写入对应列。</p>
+<h2 id="开发版">开发版</h2>
+<p>此版本包含全部查询功能，仅用于个人工作及后期维护使用，不对作者以外的所有人开放。</p>
+<h1 id="查询说明">查询说明</h1>
+<h2 id="单个查询">单个查询</h2>
+<p>在对应列下方输入对应的信息，则其他信息立刻自动查出。支持输入<code>姓名</code> ， <code>手机号</code> ，<code>短号</code> 中的任意一个，即可显示出所有其他信息。同时，标准版还支持<code>身份证号</code>输入，只要输入身份证号，立刻显示此号对应的人员的待查项目信息（对应项目标准版可以自由设置）。</p>
+<h2 id="按组查询">按组查询</h2>
+<p>在<code>姓名列</code>输入学科组(比如<code>物理组</code>)，则系统自动查询本组人员，并全部列出。目前支持的<code>按组查询项</code>分别为：</p>
+<div class="note success"><p>语文组、数学组、英语组、物理组、化学组、生物组、政治组、历史组、地理组、信息组、音乐组、体育组、美术组、督导室、初中部、行政办公室、政教处、教导处、实验室、水电办公室、教科所、前后勤、高一班主任、高二班主任、高三班主任、艺术部班主任、实验部班主任、复习部班主任</p>
+</div>
+<h2 id="批量查询">批量查询</h2>
+<p>在<code>姓名</code>、<code>手机号</code>、<code>短号</code>中的任何一列，粘贴对应的<code>姓名</code>、<code>手机号</code>、<code>短号</code>数据，然后点击<code>批量查询</code>,则所有人员将依次自动查询并列出。若之前有过查询，这三者如果不全，则系统先处理姓名、再手机号、最后处理短号。</p>
+<h2 id="姓名更正">姓名更正</h2>
+<p>本通讯录姓名严格按照身份证姓名进行了校对，如果输入错误的汉字，则系统自动纠正到身份证上的姓名。例如：在姓名列，输入<code>张大勇</code>，同系统自动更正为<code>张金明</code>,输入<code>刘军</code>，系统自动更正为<code>刘君</code></p>
+<h2 id="导出">导出</h2>
+<p>对于查询完的结果，点击导出按钮，则会自动生成EXCEL文件，并自动打开文件夹显示导出的文件。为了方便大家找到，此文件夹默认设置在桌面<code>查询结果</code> ，暂时不支持自定义导出文件夹位置。后期根据同事们反馈，适当增加相应功能。</p>
+<h2 id="清空和撤消">清空和撤消</h2>
+<p>当查询条目过多时，可以点击<code>清空</code>按钮，恢复到初始状态，如果只是删除最后一条记录，则点击<code>撤消</code>按钮即可。</p>
+<h1 id="自由捐肋">自由捐肋</h1>
+<p>开发一款软件需要莫大的精力，作为业余程序员，我希望能够为大家提供实用的工具，为了支持本软件的持续开发，欢迎自由捐助。超<code>5元</code>的捐助，将列在帮助文件致谢名单，感谢您的支持。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>您的支持将鼓励我继续创作，请我喝杯咖啡吧^_^</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.jpg" alt="冯振华 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="冯振华 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/VBA%E5%BC%80%E5%8F%91/" rel="tag"># VBA开发</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/06/01/%E6%92%B0%E5%86%99%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7/" rel="prev" title="撰写个人博客的必要性">
+                  <i class="fa fa-chevron-left"></i> 撰写个人博客的必要性
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/07/10/Ventoy%E5%88%B6%E4%BD%9C%E5%A4%9A%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E7%9B%98/" rel="next" title="Ventoy制作多系统启动盘">
+                  Ventoy制作多系统启动盘 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">冯振华</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdn.jsdelivr.net/npm/pdfobject@2.2.5/pdfobject.min.js","integrity":"sha256-YuNlP9i6s/WH7EaU2kErloo9Vc85C3WVqhoMDgsEVpY="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"forest","js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js","integrity":"sha256-sVAx+v/Q7v0Q2xm5vN7h5ccSna6gaLREhG9sF8pKT6I="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

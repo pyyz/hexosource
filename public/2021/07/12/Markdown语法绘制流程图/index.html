@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pyyz.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="在之前的文章中我尝试绘制过流程图，但是效果不理想，在2021年7月12日的研究学习中成功实现绘制流程图目的。现在记录两种流程图mermaid 和 flowchart.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Markdown语法绘制流程图">
+<meta property="og:url" content="http://pyyz.github.io/2021/07/12/Markdown%E8%AF%AD%E6%B3%95%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B%E5%9B%BE/index.html">
+<meta property="og:site_name" content="格物万象，究理天人">
+<meta property="og:description" content="在之前的文章中我尝试绘制过流程图，但是效果不理想，在2021年7月12日的研究学习中成功实现绘制流程图目的。现在记录两种流程图mermaid 和 flowchart.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-12T07:25:55.000Z">
+<meta property="article:modified_time" content="2021-09-27T08:23:04.790Z">
+<meta property="article:author" content="冯振华">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://pyyz.github.io/2021/07/12/Markdown%E8%AF%AD%E6%B3%95%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B%E5%9B%BE/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://pyyz.github.io/2021/07/12/Markdown%E8%AF%AD%E6%B3%95%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B%E5%9B%BE/","path":"2021/07/12/Markdown语法绘制流程图/","title":"Markdown语法绘制流程图"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Markdown语法绘制流程图 | 格物万象，究理天人</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">格物万象，究理天人</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">fengzhenhua@outlook.com</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#mermaid%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">1.</span> <span class="nav-text">mermaid流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85mermaid%E6%8F%92%E4%BB%B6"><span class="nav-number">1.1.</span> <span class="nav-text">安装mermaid插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE%E4%B8%BE%E4%BE%8B"><span class="nav-number">1.1.1.</span> <span class="nav-text">流程图举例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%BA%90%E7%A0%81"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">源码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%88%E6%9E%9C"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">效果</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE%E8%AF%AD%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">流程图语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E5%90%91%E8%A1%A8%E8%BE%BE"><span class="nav-number">1.2.1.</span> <span class="nav-text">方向表达</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8A%82%E7%82%B9"><span class="nav-number">1.2.2.</span> <span class="nav-text">节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E7%BA%BF"><span class="nav-number">1.2.3.</span> <span class="nav-text">连接线</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%90%E5%9B%BE"><span class="nav-number">1.3.</span> <span class="nav-text">子图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%90%E5%9B%BE%E6%BA%90%E7%A0%81"><span class="nav-number">1.3.1.</span> <span class="nav-text">子图源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%90%E5%9B%BE%E6%95%88%E6%9E%9C"><span class="nav-number">1.3.2.</span> <span class="nav-text">子图效果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B7%E5%BC%8F%E9%93%BE%E6%8E%A5"><span class="nav-number">1.4.</span> <span class="nav-text">样式链接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B7%E5%BC%8F%E9%93%BE%E6%8E%A5%E6%BA%90%E7%A0%81"><span class="nav-number">1.4.1.</span> <span class="nav-text">样式链接源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B7%E5%BC%8F%E9%93%BE%E6%8E%A5%E6%95%88%E6%9E%9C"><span class="nav-number">1.4.2.</span> <span class="nav-text">样式链接效果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%BC%E5%90%88%E5%BA%94%E7%94%A8"><span class="nav-number">1.5.</span> <span class="nav-text">综合应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%BC%E5%90%88%E5%BA%94%E7%94%A8%E6%BA%90%E7%A0%81"><span class="nav-number">1.5.1.</span> <span class="nav-text">综合应用源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%BC%E5%90%88%E5%BA%94%E7%94%A8%E6%95%88%E6%9E%9C"><span class="nav-number">1.5.2.</span> <span class="nav-text">综合应用效果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%8F%E5%88%97%E5%9B%BE%E8%AF%AD%E6%B3%95"><span class="nav-number">1.6.</span> <span class="nav-text">序列图语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%E5%86%85%E5%AE%B9"><span class="nav-number">1.6.1.</span> <span class="nav-text">语法内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E4%B8%8E%E8%80%85"><span class="nav-number">1.6.2.</span> <span class="nav-text">参与者</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E7%BA%BF"><span class="nav-number">1.6.3.</span> <span class="nav-text">消息线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%AD"><span class="nav-number">1.6.4.</span> <span class="nav-text">处理中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E6%B3%A8"><span class="nav-number">1.6.5.</span> <span class="nav-text">标注</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF"><span class="nav-number">1.6.6.</span> <span class="nav-text">循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A4%E6%96%AD"><span class="nav-number">1.6.7.</span> <span class="nav-text">判断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%BC%E5%90%88%E5%BA%94%E7%94%A8%E6%BA%90%E7%A0%81-1"><span class="nav-number">1.6.8.</span> <span class="nav-text">综合应用源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%BC%E5%90%88%E5%BA%94%E7%94%A8%E6%95%88%E6%9E%9C-1"><span class="nav-number">1.6.9.</span> <span class="nav-text">综合应用效果</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#flowchart%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">2.</span> <span class="nav-text">flowchart流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0flowchart%E6%94%AF%E6%8C%81"><span class="nav-number">2.1.</span> <span class="nav-text">添加flowchart支持</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0flowchart%E4%BB%A3%E7%A0%81"><span class="nav-number">2.1.1.</span> <span class="nav-text">添加flowchart代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#flowchart%E4%B8%BE%E4%BE%8B%E6%BA%90%E7%A0%81"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">flowchart举例源码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#flowchart%E4%B8%BE%E4%BE%8B%E6%95%88%E6%9E%9C"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">flowchart举例效果</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flow%E8%AF%AD%E6%B3%95%E7%BB%93%E6%9E%84"><span class="nav-number">2.2.</span> <span class="nav-text">Flow语法结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">2.2.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8A%82%E7%82%B9%E5%AE%9A%E4%B9%89"><span class="nav-number">2.2.2.</span> <span class="nav-text">节点定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8A%82%E7%82%B9%E8%BF%9E%E6%8E%A5"><span class="nav-number">2.2.3.</span> <span class="nav-text">节点连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E6%96%B9%E5%90%91"><span class="nav-number">2.2.4.</span> <span class="nav-text">连接方向</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">冯振华</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pyyz.github.io/2021/07/12/Markdown%E8%AF%AD%E6%B3%95%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B%E5%9B%BE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冯振华">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="格物万象，究理天人">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Markdown语法绘制流程图
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-07-12 15:25:55" itemprop="dateCreated datePublished" datetime="2021-07-12T15:25:55+08:00">2021-07-12</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-09-27 16:23:04" itemprop="dateModified" datetime="2021-09-27T16:23:04+08:00">2021-09-27</time>
+      </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>在之前的文章中我尝试绘制过流程图，但是效果不理想，在2021年7月12日的研究学习中成功实现绘制流程图目的。现在记录两种流程图mermaid 和 flowchart.</p>
+<span id="more"></span>
+<h1 id="mermaid流程图">mermaid流程图</h1>
+<h2 id="安装mermaid插件">安装mermaid插件</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># npm install --save hexo-filter-mermaid-diagrams</span><br></pre></td></tr></table></figure>
+<p>插件安装完毕，在配置文件_config.yml中找到mermaid选项，将enable设置为true。</p>
+<h3 id="流程图举例">流程图举例</h3>
+<h4 id="源码">源码</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">###mermaid</span><br><span class="line">graph TD</span><br><span class="line">    B((开始)) --&gt;C&#123;判断&#125;</span><br><span class="line">    C -- a=1 --&gt; D[执行语句1]</span><br><span class="line">    C -- a=2 --&gt; E[执行语句2]</span><br><span class="line">    C -- a=3 --&gt; F[执行语句3]</span><br><span class="line">    C -- a=4 --&gt; G[执行语句4]</span><br><span class="line">    D --&gt; AA((结束))</span><br><span class="line">    E --&gt; AA</span><br><span class="line">    F --&gt; AA</span><br><span class="line">    G --&gt; AA</span><br><span class="line">###</span><br></pre></td></tr></table></figure>
+<p>注意：为了防止转义，将三个单反引号以#取代，实际操作时请代换为三个单反引号。</p>
+<h4 id="效果">效果</h4>
+<pre class="mermaid">graph TD
+    B((开始)) -->C{判断}
+    C -- a=1 --> D[执行语句1]
+    C -- a=2 --> E[执行语句2]
+    C -- a=3 --> F[执行语句3]
+    C -- a=4 --> G[执行语句4]
+    D --> AA((结束))
+    E --> AA
+    F --> AA
+    G --> AA</pre>
+<h2 id="流程图语法">流程图语法</h2>
+<h3 id="方向表达">方向表达</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">方向</th>
+<th style="text-align: center;">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">TB</td>
+<td style="text-align: center;">从上到下</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">BT</td>
+<td style="text-align: center;">从下到上</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">RL</td>
+<td style="text-align: center;">从右到左</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">LR</td>
+<td style="text-align: center;">从左到右</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">TD</td>
+<td style="text-align: center;">与TB相同</td>
+</tr>
+</tbody>
+</table>
+<h3 id="节点">节点</h3>
+<p>语法结构为： A[名称] --&gt; B(名称) 其中，A、B均代表形状名称，--&gt; 表示箭头指向，形状样式用后面的括号来表示，括号里面的内容是形状中要显示的文本内容。其中有以下几种形状：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">括号形式</th>
+<th style="text-align: center;">形状样式</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">[]</td>
+<td style="text-align: center;">矩形框</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">()</td>
+<td style="text-align: center;">圆角矩形框</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">{}</td>
+<td style="text-align: center;">菱形</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">(())</td>
+<td style="text-align: center;">圆形</td>
+</tr>
+</tbody>
+</table>
+<h3 id="连接线">连接线</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">符号</th>
+<th style="text-align: center;">箭头</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">-&gt;</td>
+<td style="text-align: center;">箭头</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">无箭头</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-文字-/-|文字|</td>
+<td style="text-align: center;">带文字的连接线</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-&gt;|文字|-/-文字--&gt;</td>
+<td style="text-align: center;">带箭头和文字的连接线</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-.-&gt;</td>
+<td style="text-align: center;">虚线</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-.文字.-&gt;</td>
+<td style="text-align: center;">带文字的虚线连接</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">==&gt;</td>
+<td style="text-align: center;">粗连接线</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">==文本==&gt;</td>
+<td style="text-align: center;">带文本的粗连线</td>
+</tr>
+</tbody>
+</table>
+<h2 id="子图">子图</h2>
+<h3 id="子图源码">子图源码</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">###mermaid</span><br><span class="line">   graph TB</span><br><span class="line">   c1--&gt; a2</span><br><span class="line">   subgraph one</span><br><span class="line">   a1--&gt;a2</span><br><span class="line">   end</span><br><span class="line">   subgraph two</span><br><span class="line">   b1--&gt;b2</span><br><span class="line">   end</span><br><span class="line">   subgraph three</span><br><span class="line">   c1--&gt;c2</span><br><span class="line">   end</span><br><span class="line">###</span><br></pre></td></tr></table></figure>
+<h3 id="子图效果">子图效果</h3>
+<pre class="mermaid">   graph TB
+   c1--> a2
+   subgraph one
+   a1-->a2
+   end
+   subgraph two
+   b1-->b2
+   end
+   subgraph three
+   c1-->c2
+   end</pre>
+<h2 id="样式链接">样式链接</h2>
+<h3 id="样式链接源码">样式链接源码</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">###mermaid</span><br><span class="line">graph LR</span><br><span class="line">   id1(Start)--&gt;id2(Stop)</span><br><span class="line">   style id1 fill:#f9f,stroke:#333,stroke-width:4px</span><br><span class="line">   style id2 fill:#ccf,stroke:#f66,stroke-width:2px,stroke-dasharray:5,5</span><br><span class="line">###</span><br></pre></td></tr></table></figure>
+<h3 id="样式链接效果">样式链接效果</h3>
+<pre class="mermaid">graph LR
+   id1(Start)-->id2(Stop)
+   style id1 fill:#f9f,stroke:#333,stroke-width:4px
+   style id2 fill:#ccf,stroke:#f66,stroke-width:2px,stroke-dasharray:5,5</pre>
+<h2 id="综合应用">综合应用</h2>
+<h3 id="综合应用源码">综合应用源码</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">###mermaid</span><br><span class="line">graph TB</span><br><span class="line">    id1(圆角矩形)--普通线--&gt;id2[矩形]</span><br><span class="line">    subgraph 子图表</span><br><span class="line">	id2==粗线==&gt;id3&#123;菱形&#125;</span><br><span class="line">	id3-.虚线.-&gt;id4&gt;右向旗帜]</span><br><span class="line">	id3--无箭头---id5((圆形))</span><br><span class="line">    end</span><br><span class="line">    style id1 fill:#f9f,stroke:#333,stroke-width:4px</span><br><span class="line">###</span><br></pre></td></tr></table></figure>
+<h3 id="综合应用效果">综合应用效果</h3>
+<pre class="mermaid">graph TB
+    id1(图角矩形)--普通线-->id2[矩形]
+    subgraph 子图表
+    id2==粗线==>id3{菱形}
+    id3-.虚线.->id4>右向旗帜]
+    id3--无箭头---id5((圆形))
+    end
+    style id1 fill:#f9f,stroke:#333,stroke-width:4px</pre>
+<h2 id="序列图语法">序列图语法</h2>
+<h3 id="语法内容">语法内容</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sequenceDiagram</span><br><span class="line">    [参与者1][消息线][参与者2]:消息本</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<h3 id="参与者">参与者</h3>
+<p>上例中语法是最简单的，也可以明显表明参与者有哪些，如下 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sequenceDiagram</span><br><span class="line">    participant 参与者1</span><br><span class="line">    participant 参与者2</span><br><span class="line">    ...</span><br><span class="line">    participant 简称 as 参与者 3 # 该语法可以在接下来的描述中使用简称来代替参与者 312345</span><br></pre></td></tr></table></figure></p>
+<h3 id="消息线">消息线</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">类型</th>
+<th style="text-align: center;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">-&gt;</td>
+<td style="text-align: center;">无箭头的实线</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">--&gt;</td>
+<td style="text-align: center;">无箭头的虚线</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-&gt;&gt;</td>
+<td style="text-align: center;">有箭头的实线</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">--&gt;&gt;</td>
+<td style="text-align: center;">有箭头的虚线</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-x</td>
+<td style="text-align: center;">末端为叉的实线（表示异步）</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">--x</td>
+<td style="text-align: center;">末端为叉的虚线（表示异步）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="处理中">处理中</h3>
+<p>在消息线末尾增加+,则消息接收者进入当前消息的“处理中“状态; 在消息线末尾增加-,则消息接收者离开当前消息的“处理中“状态;</p>
+<p>使用以下语法也可以直接说明某个参与者进入”处理中“状态</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">activate 参与者1</span><br></pre></td></tr></table></figure>
+<h3 id="标注">标注</h3>
+<p>语法为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Note 位置表述 参与者：标注文字1</span><br></pre></td></tr></table></figure>
+<p>其中位置表述可以为</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">表述</th>
+<th style="text-align: center;">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">right of</td>
+<td style="text-align: center;">右侧</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">left of</td>
+<td style="text-align: center;">左侧</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">over</td>
+<td style="text-align: center;">在当中，可以横跨多个参与者</td>
+</tr>
+</tbody>
+</table>
+<h3 id="循环">循环</h3>
+<p>语法为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">loop 循环的条件</span><br><span class="line">    循环体描述语句</span><br><span class="line">end123</span><br></pre></td></tr></table></figure>
+<h3 id="判断">判断</h3>
+<p>语法为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">alt 条件 1 描述</span><br><span class="line">    分支 1 描述语句</span><br><span class="line">else 条件 2 描述 # else 分支可选</span><br><span class="line">    分支 2 描述语句</span><br><span class="line">else ...</span><br><span class="line">    ...</span><br><span class="line">end1234567</span><br></pre></td></tr></table></figure>
+<p>如果遇到可选的情况，即没有else分支的情况，使用如下语法:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">opt 条件描述</span><br><span class="line">    分支描述语句</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<h3 id="综合应用源码-1">综合应用源码</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">###mermaid</span><br><span class="line">sequenceDiagram</span><br><span class="line">    participant z as 张三</span><br><span class="line">    participant l as 李四</span><br><span class="line">    loop 日复一日</span><br><span class="line">	z-&gt;&gt;l: 吃了吗您呐？</span><br><span class="line">	l--&gt;&gt;z: 吃了，您呢？</span><br><span class="line">	activate z</span><br><span class="line">	Note left of z:想了一下</span><br><span class="line">	alt 还没吃</span><br><span class="line">	    z-xl:还没呢，正准备回去吃</span><br><span class="line">	else 已经吃了</span><br><span class="line">	    z-xl:我也吃过了，哈哈</span><br><span class="line">	end</span><br><span class="line">	opt 大过年的</span><br><span class="line">	    l--&gt;z: 祝您新年好啊</span><br><span class="line">	end</span><br><span class="line">    end</span><br><span class="line">###</span><br></pre></td></tr></table></figure>
+<h3 id="综合应用效果-1">综合应用效果</h3>
+<pre class="mermaid">sequenceDiagram
+    participant z as 张三
+    participant l as 李四
+    loop 日复一日
+    z->>l: 吃了吗您呐？
+    l-->>z: 吃了，您呢？
+    activate z
+    Note left of z:想了一下
+    alt 还没吃
+        z-xl:还没呢，正准备回去吃
+    else 已经吃了
+        z-xl:我也吃过了，哈哈
+    end
+    opt 大过年的
+        l-->z: 祝您新年好啊
+    end
+    end</pre>
+<h1 id="flowchart流程图">flowchart流程图</h1>
+<p>flowchart简便易用，其不如mermaid表达的图丰富，但是就其易性而言，此处也记录其使用。</p>
+<h2 id="添加flowchart支持">添加flowchart支持</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># npm install --save hexo-filter-flowchart</span><br></pre></td></tr></table></figure>
+<h3 id="添加flowchart代码">添加flowchart代码</h3>
+<h4 id="flowchart举例源码">flowchart举例源码</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">###flowchart</span><br><span class="line">st=&gt;start: 开始节点</span><br><span class="line">in=&gt;inputoutput: 输入</span><br><span class="line">e=&gt;end: 结束节点</span><br><span class="line">op=&gt;operation: 操作节点</span><br><span class="line">cond=&gt;condition: 条件节点</span><br><span class="line">sub=&gt;subroutine: 子例程</span><br><span class="line">out=&gt;inputoutput: 输出</span><br><span class="line">st(right)-&gt;in-&gt;op-&gt;cond</span><br><span class="line">cond(yes,right)-&gt;out-&gt;e</span><br><span class="line">cond(no)-&gt;sub</span><br><span class="line">###</span><br></pre></td></tr></table></figure>
+<p>注意：代码前没有空格,如果有空格则不能正确生成流程图。</p>
+<h4 id="flowchart举例效果">flowchart举例效果</h4>
+<center>
+<div id="flowchart-0" class="flow-chart">
+
+</div>
+</center>
+<h2 id="flow语法结构">Flow语法结构</h2>
+<h3 id="概述">概述</h3>
+<p>flow语法直截了当，分为节点定义和节点连接两部分</p>
+<h3 id="节点定义">节点定义</h3>
+<p>语法结构为： x=&gt;Y:z</p>
+<p>其中，X是变量名，Y是操作模块名，冒号后面的Z是具体显示的文字内容。需注意冒号后必须有空格才能识别，而X,Y与=&gt;之间不允许有空格。其中变量名X和文字内容Z可以比较随意设置，但Y有固定的内容，主要有以下几种：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">操作模块名</th>
+<th style="text-align: center;">表示含义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">start</td>
+<td style="text-align: center;">开始</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">end</td>
+<td style="text-align: center;">结束</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">operation</td>
+<td style="text-align: center;">普通操作块</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">subroutine</td>
+<td style="text-align: center;">子任务块</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">condition</td>
+<td style="text-align: center;">判断块</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">inputoutput</td>
+<td style="text-align: center;">输入输出块</td>
+</tr>
+</tbody>
+</table>
+<h3 id="节点连接">节点连接</h3>
+<ol type="1">
+<li>定义语法节点后，需要理顺节点之间的关系才能建立正确的流程图;</li>
+<li>在flow中使用<code>-&gt;</code>符号连接两个前后的变量;</li>
+<li>如：<code>a-&gt;b-&gt;c</code>,表示节点a转到b又到c节点;</li>
+<li>上述转换也可以写成 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a-&gt;b</span><br><span class="line">b-&gt;c</span><br></pre></td></tr></table></figure></li>
+<li>condition是判断，可以取yes和no两种结果，对于不同的结果可以有不同走向。如 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cond(yes)-&gt;out</span><br><span class="line">cond(no)-&gt;op</span><br></pre></td></tr></table></figure> yes一行表示，condition成立时转向out执行;no一行表示condition不成立时转向op执行。</li>
+</ol>
+<h3 id="连接方向">连接方向</h3>
+<ol type="1">
+<li>连接线上有上下左右四个方向，如果需指定连接线连接到某一特定方向，在连接线开始的元素后面添加方向即可，方向 包括 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">（top)</span><br><span class="line">(bottom)</span><br><span class="line">(left)</span><br><span class="line">(right)</span><br></pre></td></tr></table></figure></li>
+<li>如果要设置条件框连接线方向，在括号中添加即可。条件框只有两个方向可供选择： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#yes向下，no向右（默认）</span><br><span class="line">#yes向右，no向下</span><br><span class="line">cond(yes,right)</span><br><span class="line">cond(no,bottom)</span><br></pre></td></tr></table></figure> 注意：只需要指定其中一条分支的方向即可。</li>
+</ol>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script>
+<textarea id="flowchart-0-code" style="display: none">chart
+st=>start: 开始节点
+in=>inputoutput: 输入
+e=>end: 结束节点
+op=>operation: 操作节点
+cond=>condition: 条件节点
+sub=>subroutine: 子例程
+out=>inputoutput: 输出
+st(right)->in->op->cond
+cond(yes,right)->out->e
+cond(no)->sub</textarea><textarea id="flowchart-0-options" style="display: none">{"scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("flowchart-0-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-0-options").value));  var diagram = flowchart.parse(code);  diagram.drawSVG("flowchart-0", options);</script>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>您的支持将鼓励我继续创作，请我喝杯咖啡吧^_^</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.jpg" alt="冯振华 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="冯振华 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/07/12/Windows%E8%A3%85%E6%9C%BA%E8%BD%AF%E4%BB%B6/" rel="prev" title="Windows装机软件">
+                  <i class="fa fa-chevron-left"></i> Windows装机软件
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/07/13/LaTeX%E4%B8%AD%E4%BD%BF%E7%94%A8TikZ%E5%AE%8F%E5%8C%85%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B%E5%9B%BE/" rel="next" title="LaTeX中使用TikZ宏包绘制流程图">
+                  LaTeX中使用TikZ宏包绘制流程图 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">冯振华</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdn.jsdelivr.net/npm/pdfobject@2.2.5/pdfobject.min.js","integrity":"sha256-YuNlP9i6s/WH7EaU2kErloo9Vc85C3WVqhoMDgsEVpY="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"forest","js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js","integrity":"sha256-sVAx+v/Q7v0Q2xm5vN7h5ccSna6gaLREhG9sF8pKT6I="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

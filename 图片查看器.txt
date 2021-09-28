@@ -1,8 +1,0 @@
-1、打开注册表编辑器(Win+R,Regedit)，定位至(建议修改前备份注册表)：
-
-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations
-2、在右侧窗口中点击右键，选择“新建 – 字符串值”，然后把新建的字符串值重命名为 .jpg ，数值数据设置为 PhotoViewer.FileAssoc.Tiff；然后按同样的方法新建名为 .jpeg .png .gif .bmp .pcx .tiff .ico 等常用图片格式的字符串值，数值数据均设置为 PhotoViewer.FileAssoc.Tiff。
-3、关闭注册表编辑器，然后再在图片上点击右键，“打开方式”菜单中就会显示“Windows照片查看器”了。
-
-
-上面三条是搜索出来的结果，按照上面的方法，可以使用照片查看器。

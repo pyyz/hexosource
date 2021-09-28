@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pyyz.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="原理综述 博客，我们也可以理解为一个网站。网站是用浏览器来浏览的，所以这个网站就相当于是由许多文件构成，这些文件是用不同的语言写成，最终以html的方式被浏览器解读。然而大多数的人，不是网站的设计人员，所以这许多繁锁的文件可以借助一些工具来实现，比如说本文要讲的工具--- hexo 。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Hexo搭建博客">
+<meta property="og:url" content="http://pyyz.github.io/2021/05/18/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:site_name" content="格物万象，究理天人">
+<meta property="og:description" content="原理综述 博客，我们也可以理解为一个网站。网站是用浏览器来浏览的，所以这个网站就相当于是由许多文件构成，这些文件是用不同的语言写成，最终以html的方式被浏览器解读。然而大多数的人，不是网站的设计人员，所以这许多繁锁的文件可以借助一些工具来实现，比如说本文要讲的工具--- hexo 。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-05-18T07:11:46.000Z">
+<meta property="article:modified_time" content="2021-09-27T08:23:04.790Z">
+<meta property="article:author" content="冯振华">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://pyyz.github.io/2021/05/18/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://pyyz.github.io/2021/05/18/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/","path":"2021/05/18/使用Hexo搭建博客/","title":"使用Hexo搭建博客"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>使用Hexo搭建博客 | 格物万象，究理天人</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">格物万象，究理天人</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">fengzhenhua@outlook.com</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%90%86%E7%BB%BC%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">原理综述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">软件安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2"><span class="nav-number">3.</span> <span class="nav-text">使用Hexo搭建博客</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%92%B0%E5%86%99%E5%8D%9A%E5%AE%A2"><span class="nav-number">4.</span> <span class="nav-text">撰写博客</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%98%E7%AE%A1%E5%88%B0-github-%E4%B8%8A%E5%85%AC%E5%BC%80%E4%BD%BF%E7%94%A8"><span class="nav-number">5.</span> <span class="nav-text">托管到 Github 上公开使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8https%E6%96%B9%E5%BC%8F%E7%99%BB%E5%BD%95github"><span class="nav-number">5.1.</span> <span class="nav-text">使用https方式登录github</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8ssh%E6%96%B9%E5%BC%8F%E7%99%BB%E5%BD%95github"><span class="nav-number">5.2.</span> <span class="nav-text">使用ssh方式登录github</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB"><span class="nav-number">6.</span> <span class="nav-text">问题汇总</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%87%E7%BA%A7manjaro-%E5%90%8E%E4%BD%BF%E7%94%A8hexo%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99"><span class="nav-number">6.1.</span> <span class="nav-text">升级Manjaro 后使用Hexo编译出错</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">冯振华</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pyyz.github.io/2021/05/18/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冯振华">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="格物万象，究理天人">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          使用Hexo搭建博客
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-05-18 15:11:46" itemprop="dateCreated datePublished" datetime="2021-05-18T15:11:46+08:00">2021-05-18</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-09-27 16:23:04" itemprop="dateModified" datetime="2021-09-27T16:23:04+08:00">2021-09-27</time>
+      </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="原理综述">原理综述</h2>
+<p>博客，我们也可以理解为一个网站。网站是用浏览器来浏览的，所以这个网站就相当于是由许多文件构成，这些文件是用不同的语言写成，最终以html的方式被浏览器解读。然而大多数的人，不是网站的设计人员，所以这许多繁锁的文件可以借助一些工具来实现，比如说本文要讲的工具--- hexo 。</p>
+<span id="more"></span>
+<p>当我们使用工具建立一个基本的博客模板后，之后的工作便是设置一些主题及撰写博文。这个可以使用markdown 来写，它的语法非常简洁，由于本人具备LaTeX 的使用经历，所以在vim 下使用markdown 语法写markdown 文件，感觉很顺手。但是这个markdown 文件 file.md 是不能直接被浏览器展示给读者来看的，所以需要借助于hexo 作用来转换一下，就可以了。所以从这个意义上讲hexo又肩负了一个翻译的功能。</p>
+<p>当完成上面的模板及文章写作后，我们在本地开启服务(hexo s) 后，会产生一个本地网址(文章中会具体说明），然后在浏览器中输入这个网址就可以看到博客了。但是注意，这个博客现在是在本机上，之所以能看到是因为本机专门为其开启了网站服务。然而我们的电脑又不能天天开机，同时我们写的文章是想别人能够通过网站来浏览的，所以我们需要找一台能永远开机的机器，这就是网络上的一些服务器。这些服务器，实际也是“一台电脑”，我们将刚才生成的博客的全部文件，上传到这个电脑上的指定目录，此电脑会送给我们一个域名，这样我们就可以通过域名来浏览我们设置的博客了。</p>
+<p>当我们又写了一篇博文时，我们还可以通过上述步骤将文件上传到服务器上。但是写的文章越来越多，目录越来越复杂，这样子我的就不能沉浸在写作的愉悦环境中了，所以这时hexo又扮演了另一个角色---辅助上传博文。当我们用hexo n 追加一篇博文后，然后再用设置好的hexo 上传，它很聪明，只上传改动过的文件，这就大大节省了资源，节省了时间。但我们在上传文件时，服务器会问你，向哪个账号传文件？你的密码是多少？这是很合理的，因为所有人都向我的目录乱传文件，显然我是不同意的。</p>
+<p>但是，我们写博文是经常性的操作，每次都输入一遍账号和密码，实在是麻烦。没问题啊，我们还有一个方法，就是借助一个工具ssh 对我们的账号生成密钥，然后在我们的服务器上设置启用密钥功能，重新告诉hexo ,上传文件时使用ssh 密钥验证就可以了。这样子，我们再上传文章时，我们系统的密钥和服务器中我们保存的密钥就会自动比对，比对成功则我们的博文就能自动上传到服务器了。</p>
+<p>上面，我通俗的讲解了使用服务器搭建自己博客的原理，下面按照我列出的步骤逐步操作，你也可以搭建自己的博客了。但是请注意，一定要遵守相关法律规定，不要发违法的信息。我的操作系统是manjaro , 如果你使用的windows 请百度相关文章即可，设置方式类似，我不多说了,祝你成功！</p>
+<h2 id="软件安装">软件安装</h2>
+<ol type="1">
+<li>使用Hexo搭建博客，需要安装三个软件。依次为： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#pacman -S nodejs  npm  git </span><br></pre></td></tr></table></figure></li>
+<li>安装Hexo博客软件，需借助 npm 包管理器来安装，由于国外安装源很慢，所认利用 npm 安装cnpm 。即 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure></li>
+<li>看一下 cnpm 的版本： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#cnpm -v</span><br></pre></td></tr></table></figure></li>
+<li>安装Hexo软件： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure></li>
+<li>安装完成后可以验证一下： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#hexo -v</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="使用hexo搭建博客">使用Hexo搭建博客</h2>
+<ol type="1">
+<li>新建一个文件夹，可以设置在自己想要的任何位置。但是要注意，由于博客需要经常打理，所以一旦确定位置请不要随意变更，这方便日后的使用。比如我在家目录下直接设置了一个准备存放博客的目录Hexo <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir ~/Hexo</span><br><span class="line">$ cd ~/Hexo</span><br><span class="line">$ hexo init</span><br></pre></td></tr></table></figure></li>
+<li>上述第三条命令，初始化设置一个默认的博客，包含了各种组件，但是作为一个使用者来讲我不需要知道细节，只管用就是了。这条命令会自己到 github 克隆，同时克隆一个 Landscape 主题，我自己感觉默认主题还是挺漂亮的，所以直接采用它了。现在一个初始的博客就完成了，启动博客 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure></li>
+<li>在浏览器地址栏输入上述命令生成的本地地址 localhost:4000 就可以看到默认的博客了。</li>
+</ol>
+<h2 id="撰写博客">撰写博客</h2>
+<ol type="1">
+<li>新建博文模板,如下 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo n &quot;博客声明&quot;</span><br></pre></td></tr></table></figure></li>
+<li>上述命令会新建一个markdown 文件，位于目录 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/Hexo/source/_posts/</span><br></pre></td></tr></table></figure></li>
+<li>使用vim 打开文件，编辑博客内容 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$vim ~/Hexo/source/_posts/博客声明.md</span><br></pre></td></tr></table></figure></li>
+<li>使用markdown 语法编辑好就可以了。然后使用以下命令构建博客 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure></li>
+<li>此时刷新一下刚才本地打开的 localhost:4000 就可以看到效果了。</li>
+</ol>
+<h2 id="托管到-github-上公开使用">托管到 Github 上公开使用</h2>
+<p>写好的博客，只有放在网站上生成对应的网址才能被其他人阅读到。免费的 Github 就是一个不错的选择，除了在国内访问慢了一点。这里需要几个步骤：</p>
+<h3 id="使用https方式登录github">使用https方式登录github</h3>
+<ol type="1">
+<li>登录自己的Github</li>
+<li>新建一个仓库，仓库名要与登录名一致，才可以使用简短的域名 https://youname..github.io 登录博客。</li>
+<li>使用 vim 打开配置文件 ~/Hexo/_config.yml ,在文件的最底部修改成这样子 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">type: git</span><br><span class="line">repository: https:github.com/fengzhenhua-vip/fengzhenhua-vip.github.io.git</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure> 注意：在上述设置中，冒号后面有一个英文空格。我的vim可以自动检测语法，这点让我感到非常高兴。修改完成后保存退出即可。 4.部署到远端： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$npm install hexo-deployer-git --save</span><br><span class="line">$hexo d</span><br></pre></td></tr></table></figure> 上面的这种方式是使用https方式登录的，执行上述命令后需要输入自己的账号和密码才能上传到对应的仓库中。</li>
+</ol>
+<h3 id="使用ssh方式登录github">使用ssh方式登录github</h3>
+<p>https协议方式，每次 pull 、push 都要输入密码，这种方式对于经常写博文来说非常不方便，所以我设置了第二种方式---ssh 密钥对认证，可实现免密且更加安全。</p>
+<ol type="1">
+<li>查看Git 环境配置 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config --list</span><br></pre></td></tr></table></figure> 如果没有配置user.name 和 user.email 则需要先配置一下 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;fengzhenhua-vip&quot;</span><br><span class="line">$ git config --global user.email &quot;fengzhenhua@sina.cn&quot;</span><br></pre></td></tr></table></figure></li>
+<li>查看SSH Key 如果没有设置过，则系统内没有 ～/.ssh 文件夹，这时需要先建立一下，即 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir ~/.ssh</span><br></pre></td></tr></table></figure> 如果有设置过，则执行命令 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ls -l ~/.ssh</span><br><span class="line">id_rsa  id_rsa.pub known_hosts</span><br></pre></td></tr></table></figure> 此时存在三个文件，其中第二个就是公共密钥。</li>
+<li>生成密钥 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ssh-keygen -t rsa -C &quot;fengzhenhua@sina.cn&quot;  #没有的话用此命令生成公钥和私钥</span><br><span class="line">$cat ~/.ssh/id_rsa.pub  #查看公钥并复制备用</span><br></pre></td></tr></table></figure></li>
+<li>复制密钥到github 在自己申请的github网站上，依次点击 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setting-&gt;SSH and GPG keys -&gt;New SSH key</span><br></pre></td></tr></table></figure> 取个名字，粘贴密钥即可。注意，不取名字，github会自动设置一个名字给你的，所以不取名也可以。</li>
+<li>验证是否配置成功 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ssh -T git@github.com  </span><br><span class="line">Hi fengzhenhua-vip! You&#x27;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure> 显然，配置成功了。</li>
+<li>修改Hexo的配置文件 ～/Hexo/_config.yml 我的做法是将原来设置的https 方式直接注释掉，然后在下面重新写一下ssh 格式 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">type: git</span><br><span class="line">repo: git@github.com:fengzhenhua-vip/fengzhenhua-vip.git</span><br><span class="line">branch:master</span><br></pre></td></tr></table></figure> 这样设置好后，再通过 hexo d 提交博客代码时就不用输入密码了。</li>
+<li>Hexo默认按照文件的创建顺序排列文章，然而我需要重要的文章设置顶置。在2020年5月后，Hexo 默认支持了这个功能，即使用top,但是注意文章前的设置顺序是不能乱放的，要实现这个功能必须如下安排 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: 使用Hexo搭建博客</span><br><span class="line">date: 2021-05-18 15:11:46</span><br><span class="line">tags: </span><br><span class="line">top: 2 </span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="问题汇总">问题汇总</h2>
+<h3 id="升级manjaro-后使用hexo编译出错">升级Manjaro 后使用Hexo编译出错</h3>
+<p>在2021年6月30日晚我升级了<code>Manjaro</code>系统，然后使用<code>Hexo</code>生成博客时，出现错误如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node: error while loading shared libraries: libcares.so.2: cannot open shared object file: No such file or directory</span><br></pre></td></tr></table></figure>
+<p>由于<code>Hexo</code>基于<code>Nodejs</code>,所以分析后，我重新安装了一遍<code>nodejs</code> 和 <code>pandoc</code> ,再次生成博客问题解决。即</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#  pacman -S nodejs  pandoc</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>您的支持将鼓励我继续创作，请我喝杯咖啡吧^_^</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.jpg" alt="冯振华 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="冯振华 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/05/18/%E5%8D%9A%E5%AE%A2%E5%A3%B0%E6%98%8E/" rel="next" title="博客声明">
+                  博客声明 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">冯振华</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdn.jsdelivr.net/npm/pdfobject@2.2.5/pdfobject.min.js","integrity":"sha256-YuNlP9i6s/WH7EaU2kErloo9Vc85C3WVqhoMDgsEVpY="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"forest","js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js","integrity":"sha256-sVAx+v/Q7v0Q2xm5vN7h5ccSna6gaLREhG9sF8pKT6I="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
