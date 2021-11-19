@@ -141,6 +141,14 @@ site_state: true
 # Key is the link label showing to end users.
 # Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.
 social:
+  Gitee主页: https://pyyz.gitee.io || fab fa-github
+  Github主页: https://pyyz.github.io || fab fa-github
+  Gitee主页源: https://gitee.com/pyyz || fab fa-github
+  Github主页源: https://github.com/pyyz || fab fa-github
+  Gitee博客: https://fengzhenhua.gitee.io || fab fa-github
+  Github博客: https://fengzhenhua-vip.github.io || fab fa-github
+  Gitee博客源: https://gitee.com/fengzhenhua  || fab fa-github
+  Github博客源: https://github.com/fengzhenhua-vip || fab fa-github
   #GitHub: https://github.com/yourname || fab fa-github
   #E-Mail: mailto:yourname@gmail.com || fa fa-envelope
   #Weibo: https://weibo.com/yourname || fab fa-weibo
