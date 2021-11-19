@@ -6,8 +6,8 @@
   --blockquote-color: #666;
   --link-color: #555;
   --link-hover-color: #222;
-  --brand-color: #fff;
-  --brand-hover-color: #fff;
+  --brand-color: Green;
+  --brand-hover-color: Green;
   --table-row-odd-bg-color: #f9f9f9;
   --table-row-hover-bg-color: #f5f5f5;
   --menu-item-bg-color: #f5f5f5;
@@ -1155,16 +1155,16 @@ pre code {
 }
 .header-inner {
   margin: 0 auto;
-  width: 700px;
+  width: 820px;
 }
 @media (min-width: 1200px) {
   .header-inner {
-    width: 800px;
+    width: 1093px;
   }
 }
 @media (min-width: 1600px) {
   .header-inner {
-    width: 900px;
+    width: 1536px;
   }
 }
 .site-brand-container {
@@ -1204,13 +1204,13 @@ pre code {
 }
 .site-title {
   font-family: Lato, 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  font-size: 1.375em;
+  font-size: 2.875em;
   font-weight: normal;
   margin: 0;
 }
 .site-subtitle {
-  color: #999;
-  font-size: 0.8125em;
+  color: LightBlue;
+  font-size: 1.125em;
   margin: 10px 0;
 }
 .use-motion .site-title,
@@ -1595,16 +1595,16 @@ pre code {
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;
-  width: 700px;
+  width: 820px;
 }
 @media (min-width: 1200px) {
   .footer-inner {
-    width: 800px;
+    width: 1093px;
   }
 }
 @media (min-width: 1600px) {
   .footer-inner {
-    width: 900px;
+    width: 1536px;
   }
 }
 .use-motion .footer {
@@ -2486,16 +2486,16 @@ mjx-container[display="true"] + br {
 }
 .main-inner {
   margin: 0 auto;
-  width: 700px;
+  width: 820px;
 }
 @media (min-width: 1200px) {
   .main-inner {
-    width: 800px;
+    width: 1093px;
   }
 }
 @media (min-width: 1600px) {
   .main-inner {
-    width: 900px;
+    width: 1536px;
   }
 }
 @media (max-width: 767px) {
@@ -2527,9 +2527,6 @@ mjx-container[display="true"] + br {
   margin: 0 auto 10px;
   max-width: 150px;
   padding: 5px;
-}
-.brand {
-  background: var(--btn-default-bg);
 }
 .header-inner {
   padding-top: 100px;
@@ -2636,7 +2633,7 @@ mjx-container[display="true"] + br {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #4dff41;
+  background: #0a7914;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
